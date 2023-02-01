@@ -16,7 +16,10 @@ class ViewPagerAdapter (val frack: List<Fragment>, activity: AppCompatActivity)
     }
 
     override fun createFragment(position: Int): Fragment {
-        return frack[position]
+        return when(position){
+            0 -> BlankFragment()
+            else -> BlankFragment2()
+        }
     }
 
 }
