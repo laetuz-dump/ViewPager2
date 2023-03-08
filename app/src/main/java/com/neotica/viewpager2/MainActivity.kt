@@ -2,12 +2,14 @@ package com.neotica.viewpager2
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import kotlinx.android.synthetic.main.activity_main.*
+import com.neotica.viewpager2.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         val images = listOf(
             R.drawable.matrix1,
@@ -20,6 +22,6 @@ class MainActivity : AppCompatActivity() {
         )
 
         val adapter = ViewPagerAdapter(images)
-        viewPager.adapter = adapter
+        binding.viewPager.adapter = adapter
     }
 }
