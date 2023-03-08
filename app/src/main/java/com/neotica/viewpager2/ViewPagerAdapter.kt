@@ -3,24 +3,23 @@ package com.neotica.viewpager2
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
+import androidx.viewpager2.adapter.FragmentStateAdapter
 import kotlinx.android.synthetic.main.item_view_pager.view.*
 
-class ViewPagerAdapter (val images: List<Int>)
-    :RecyclerView.Adapter<ViewPagerAdapter.ViewPagerViewHolder>() {
-    inner class ViewPagerViewHolder(itemView: View) :RecyclerView.ViewHolder(itemView)
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewPagerViewHolder {
-        val view =  LayoutInflater.from(parent.context).inflate(R.layout.item_view_pager, parent, false)
-        return ViewPagerViewHolder(view)
-    }
-
-    override fun onBindViewHolder(holder: ViewPagerViewHolder, position: Int) {
-        val currentPosition = images[position]
-        holder.itemView.ivImage.setImageResource(currentPosition)
-    }
-
+class ViewPagerAdapter (val frack: List<Fragment>, activity: AppCompatActivity)
+    :FragmentStateAdapter(activity) {
     override fun getItemCount(): Int {
-        return images.size
+        return frack.size
     }
+
+    override fun createFragment(position: Int): Fragment {
+        return when(position){
+            0 -> BlankFragment()
+            else -> BlankFragment2()
+        }
+    }
+
 }
