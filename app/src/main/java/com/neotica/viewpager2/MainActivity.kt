@@ -5,12 +5,14 @@ import android.os.Bundle
 import androidx.fragment.app.Fragment
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
-import kotlinx.android.synthetic.main.activity_main.*
+import com.neotica.viewpager2.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
+    private lateinit var binding:ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding= ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         val images = listOf<Fragment>(
             BlankFragment(),
@@ -20,11 +22,11 @@ class MainActivity : AppCompatActivity() {
         val adapter = ViewPagerAdapter(images, this)
         //Step 7: Add title list for position started in 0
         val titles = listOf("Home", "nope")
-        viewPager.adapter = adapter
+        binding.viewPager.adapter = adapter
 
         //Step 6: Add TabLayoutMediator
         //Version 1: Incremental Tabs
-        TabLayoutMediator(tabLayout, viewPager) {tab, position ->
+        TabLayoutMediator(binding.tabLayout, binding.viewPager) {tab, position ->
             tab.text = titles[position]
         }.attach()
        /* //Version 2: OnClick on tabs

@@ -5,10 +5,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.neotica.viewpager2.databinding.FragmentBlankBinding
+import com.neotica.viewpager2.databinding.FragmentBlank2Binding
 
-class BlankFragment : Fragment() {
-    private lateinit var binding: FragmentBlankBinding
+class BlankFragment2 : Fragment() {
+    private lateinit var binding: FragmentBlank2Binding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -19,8 +19,8 @@ class BlankFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        binding = FragmentBlank2Binding.inflate(layoutInflater, container, false)
         // Inflate the layout for this fragment
-        binding= FragmentBlankBinding.inflate(layoutInflater, container, false)
         return binding.root
     }
 
